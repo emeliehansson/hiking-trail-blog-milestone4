@@ -1,5 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
 body {
     background-color: #fafafa;
     font-family: 'Montserrat', sans-serif;
-    margin-bottom: 50px;
 }
+
+/* ----------------------- Hero Image */
+
+.hero-image {
+    width: 100%;
+    height: 400px;
+    background: url('https://res.cloudinary.com/diy7yqm8i/image/upload/v1679322804/pexels-krivec-ales-554609_bcvucm.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    background-attachment: fixed;
+  }
+  .hero-image h5 {
+    color:white;
+    text-shadow:2px 2px #333;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+/* ----------------------- Navbar */
+
+.navbar-brand {
+    color: #363935;
+    margin-left: 10px;
+    font-size: 23px;
+}
+
+.navbar-nav {
+    color: #363935;
+    font-size: 20px;
+}
+
+.navbar-toggler {
+    color: #363935;
+    margin-right: 10px;
+    border: 2px solid #363935;
+}
+
+.navbar-toggler:focus, 
+.navbar-toggler:active {
+    color: #363935;
+    border: 2px solid #363935;
+    outline: none;
+}
+
+footer {
+    background-color: #4b4a2c;
+}
+
+
+
+
+/* --------------------------------------------------------Media Query
+@media screen and (max-width: 375px) {
+
+    .blog {
+        margin-top: 200px;
+    }
+    
+    .welcome {
+        margin-top: 150px;
+        background: #343a40;
+    }
+    
+    } */

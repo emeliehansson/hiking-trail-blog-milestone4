@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
+{% load crispy_forms_tags %}
+
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -9,9 +11,10 @@
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in post.featured_image.url %}
-                    <img src="https://res.cloudinary.com/diy7yqm8i/image/upload/v1679304360/vtsawk5hivjodgwuhhal.webp" width="100%">
+                <img src="https://res.cloudinary.com/diy7yqm8i/image/upload/v1679304360/vtsawk5hivjodgwuhhal.webp"
+                    width="100%">
                 {% else %}
-                    <img src="{{ post.featured_image.url }}" width="100%">
+                <img src="{{ post.featured_image.url }}" width="100%">
                 {% endif %}
             </div>
         </div>
@@ -26,15 +29,66 @@
                 <div class="row">
 
                     <div class="col-1">
-                        <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }}</strong>
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+
+                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like">
+                                    <i class="fa-sharp fa-solid fa-heart"></i>
+                                </button>
+
+                                {% else %}
+
+                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like">
+                                    <i class="fa-sharp fa-regular fa-heart"></i>
+                                </button>
+
+                                {% endif %}
+
+
+                            </form>
+                            {% else %}
+
+                            <span class="text-secondary"><i class="fa-sharp fa-regular fa-heart"></i></span>
+                            {% endif %}
+                            <span class="text-secondary">{{ post.number_of_likes }}</span>
+                        </strong>
+
                     </div>
                     <div class="col-1">
-                        <strong class="text-secondary"><i class="far fa-bookmark"></i> {{ post.number_of_saves }}</strong>
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'post_save' post.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if saved %}
+
+                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-save">
+                                    <i class="fa-sharp fa-solid fa-bookmark"></i>
+                                </button>
+
+                                {% else %}
+
+                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-save">
+                                    <i class="fa-sharp fa-regular fa-bookmark"></i>
+                                </button>
+
+                                {% endif %}
+
+
+                            </form>
+                            {% else %}
+
+                            <span class="text-secondary"><i class="fa-sharp fa-regular fa-bookmark"></i></span>
+                            {% endif %}
+                            <span class="text-secondary">{{ post.number_of_saves }}</span>
+                        </strong>
                     </div>
                     <div class="col-1">
-                    {% with comments.count as total_comments %}
+                        {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="far fa-comments"></i> {{ total_comments }}</strong>
-                    {% endwith %}
+                        {% endwith %}
                     </div>
                 </div>
             </div>
@@ -64,7 +118,25 @@
         </div>
         <div class="col-md-8 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
+
+                {% if commented %}
+                <div class="alert alert-success" role="alert">
+                    Your comment is awaiting approval
+                </div>
+                {% else %}
+
+                {% if user.is_authenticated %}
+
+                <h3>Leave a Comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="POST" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% endif %}
+                {% endif %}
+
             </div>
         </div>
     </div>

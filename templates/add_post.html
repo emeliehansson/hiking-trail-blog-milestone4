@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% load crispy_forms_tags %} {% block content %}
+<!-- Only allows users who are log in --> 
+{% if user.is_authenticated %} 
+	<div class="container mb-3">
+		<div class="row">
+			<div class="col-md-8 mt-1 offset-md-2">
+				<!-- Success alert when submitted -->
+				<h2>Create Your own post with a Trail you love!</h2> 
+                {% if submitted %} Your Post was Submitted Successfully, Thank You for Contributing.
+            {% else %} 
+                <div class="container">
+					<div class="row">
+						<form method=POST> 
+              {% csrf_token %} 
+              {{ form|crispy }}
+							<input type="submit" value="Submit" class="btn btn-signup">
+						</form>
+					</div>
+				</div> {% endif %}
+				<!-- Alert to let users know they need to be logged in  --> 
+           {% else %} 
+                <div class="text-light">
+					<h1>Sorry. You must be Logged In to create a review. </h1>
+					<a href="{% url 'account_login' %}">Login Here</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endif %} 
+{% endblock %}

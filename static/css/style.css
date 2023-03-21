@@ -7,6 +7,7 @@
 body {
     background-color: #fafafa;
     font-family: 'Montserrat', sans-serif;
+    padding-bottom: 150px;
 }
 
 /* ----------------------- Hero Image */
@@ -55,12 +56,45 @@ body {
 
 footer {
     background-color: #4b4a2c;
+    position: absolute;
 }
 
 
+/* ----------------------- Cards */
+
+.card {
+    border: none;
+    background-color: transparent;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-flash {
+    position: absolute;
+    bottom: 5%;
+    min-width: 30%;
+    left: -2px;
+    background-color: #4b4a2c;
+}
+
+.level {
+    color: #fafafa;
+    margin: 4px;
+    text-transform: uppercase;
+}
+
+.card-title {
+    color: #363935;
+}
+
+.card-text {
+    color: #363935;
+}
 
 
-/* --------------------------------------------------------Media Query
+/* ----------------------- Media Queries
 @media screen and (max-width: 375px) {
 
     .blog {

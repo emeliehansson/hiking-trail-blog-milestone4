@@ -20,13 +20,14 @@ body {
     background-position: center;
     background-size:cover;
     background-attachment: fixed;
-  }
+}
   .hero-image h5 {
     color:white;
     text-shadow:2px 2px #333;
     text-align: center;
     margin-top: 20px;
-  }
+    font-size: 20px;
+}
 
 /* ----------------------- Navbar */
 
@@ -91,6 +92,24 @@ footer {
 
 .card-text {
     color: #363935;
+}
+
+/* ----------------------- Post detail view */
+.masthead {
+    background-color: #fafafa;
+    margin-top: 10px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.masthead-text {
+    color:  #363935;
+}
+
+.masthead-image {
+    position: relative;
+    overflow: hidden;
+    margin-top: 5%;
 }
 
 

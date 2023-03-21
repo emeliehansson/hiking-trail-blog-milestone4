@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container-fluid" display: flex;>
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
-                                    <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="Image of a childs book shelf" style="width:100%; height:100%;">
+                                    <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="Image posted by user who created the post" style="width:100%; height:100%;">
                                     {% else %}
                                     <img class="card-img-top" src="https://res.cloudinary.com/diy7yqm8i/image/upload/v1679304360/vtsawk5hivjodgwuhhal.webp" alt="Image of a hiker on a mountain">
                                     {% endif %}
@@ -21,7 +21,7 @@
                                         <p class="level">Difficulty: {{ post.level }}</p>
                                     </div>
                                 </div>
-                                <a href="#" class="post-link">
+                                <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                     <h2 class="card-title">{{ post.title }}</h2>
                                     <p class="card-text">{{ post.excerpt }}</p>
                                 </a>
@@ -29,8 +29,8 @@
                                 <p class="card-text text-muted h6">{{ post.created_on }}
                                     <br>
                                     <br>
-                                    <i class="fa-solid fa-heart">{{ post.number_of_likes }}</i>
-                                    <i class="fa-solid fa-bookmark">{{ post.number_of_saves }}</i>
+                                    <i class="far fa-heart"> {{ post.number_of_likes }}</i>
+                                    <i class="fa-regular fa-bookmark"> {{ post.number_of_saves }}</i>
                                 </p>
                             </div>
                         </div>

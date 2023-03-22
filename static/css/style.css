@@ -91,6 +91,12 @@ footer {
 
 .card-title {
     color: #363935;
+    text-decoration: none;
+}
+
+.card-title:hover,
+.card-title:active {
+    color: #363935;
 }
 
 .card-text {

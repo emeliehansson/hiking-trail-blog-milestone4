@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
-from django.views.generic import View, CreateView, ListView
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.views.generic import View, CreateView, ListView, UpdateView
+from django.urls import reverse_lazy
 from .models import Post
 from django.utils.text import slugify
 from django.http import HttpResponseRedirect
@@ -49,7 +50,7 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-    
+
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by('created_on')
@@ -85,37 +86,25 @@ class PostDetail(View):
         )
 
 
-def update_post(request, post_id):
+class AddPost(LoginRequiredMixin, CreateView):
     """
-    Users can access a form to updated their
-    own posts.
+    The user has to be logged in to add a post and access the
+    template. This view makes sure of that.
     """
-    trail = Post.objects.get(pk=post_id)
-    form = UserBlogPost(request.POST or None, instance=trail)
-    if post.author != request.user:
-        return redirect("This is not your post, you can't update.")
-    if form.is_valid():
-        form.save()
-        return redirect('list-trails')
+    model = Post
+    template_name = 'add_post.html'
+    fields = ('title', 'content', 'featured_image',)
 
-    return render(request,
-                  'update_post.html',
-                  {'update_trails': trail, 'form': form})
+    def get_success_url(self):
+        return reverse('home')
 
-
-def list_trails(request):
-    """
-    The posts the user has created will
-    be listed in this view.
-    """
-    if request.user.is_authenticated:
-        user = request.user.id
-        review = Post.objects.filter(author.user)
-        return render(request, 'trail_list.html', {'post': post})
-    
-    else:
-        messages.success(request, ('You have to login first.'))
-        return redirect('home')
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        messages.success(
+            self.request,
+            'Your blogpost have been added and is waiting for approval!')
+        form.slug = slugify(form.instance.title)
+        return super().form_valid(form)
 
 
 class PostLike(View):
@@ -142,78 +131,3 @@ class PostSave(View):
             post.saves.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-
-
-class AddPost(LoginRequiredMixin, CreateView):
-    """
-    The user has to be logged in to add a post and access the
-    template. This view makes sure of that.
-    """
-    template_name = 'add_post.html'
-    form_class = UserBlogPost
-
-    def get_success_url(self, form):
-        return reverse('list-trails')
-
-    def form_valid(self, form):
-        """
-        """
-        form.instance.user = self.request.user
-        messages.success(
-            self.request,
-            'Your blogpost have been added and is waiting for approval!')
-        form.slug = slugify(form.instance.title)
-        return super().form_valid(form)
-
-
-def delete_post(request, post_id):
-    """
-    Users can delete their own posts.
-    """
-    rev = Post.objects.get(pk=post_id)
-    context = {'rev': rev}
-
-    if request.method == POST:
-        rev.delete()
-        messages.success(request,
-                         ('The post has been deleted.'))
-        return redirect('list-trails')
-
-    return render(request, 'delete.html', context)
-
-
-def contact(request):
-    """
-    Users can submit contact form to admin panel.
-    """
-    submitted = False
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/contact?submitted = True')
-    else:
-        form = ContactForm()
-        if 'submitted' in request.GET:
-            submitted = True
-    return render(request, 'contact.html',
-                  {'form': form, 'submitted': submitted})
-
-
-def difficulty1(request):
-    """
-    Users can view posts sorted by their difficulty.
-    """
-    view = Post.objects.filter(difficulty=1)
-    return render(request, 'difficulty.html', {'view': view})
-
-
-def difficulty2(request):
-
-    view = Post.objects.filter(difficulty=2)
-    return render(request, 'difficulty.html', {'view': view})
-
-
-def difficulty3(request):
-    view = Post.objects.filter(difficulty=3)
-    return render(request, 'difficulty.html', {'view': view})

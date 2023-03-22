@@ -10,20 +10,8 @@ class UserBlogPost(forms.ModelForm):
         model = Post
         fields = (
             'title',
-            # 'city',
             'content',
-            # 'dog_friendly',
-        )
-
-    widgets = {
-        #                                'label': 'Trail Name'}),
-        # 'trail_city': forms.TextInput(attrs={'class': 'form-control'}),
-        # 'difficulty': forms.Select(attrs={'class': 'form-control'}),
-        # 'dog_friendly': forms.Select(attrs={'class': 'form-control'}),
-        # 'kid_friendly': forms.Select(attrs={'class': 'form-control'}),
-        # 'excerpt': forms.TextInput(attrs={'placeholder': 'blog'}),
-        # 'content': forms.TextInput(attrs={'class': 'form-control'}),
-    }
+            )
 
 
 class CommentForm(forms.ModelForm):

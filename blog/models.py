@@ -7,34 +7,25 @@ from django.urls import reverse
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
 
-class Trail(models.Model):
-    """
-    Trail table.
-    """
-    trail_name = models.CharField(max_length=200)
-    trail_image = CloudinaryField('image', default='placeholder')
-    slug = models.SlugField(max_length=200, unique=True)
-
-    def __str__(self):
-        return self.trail_name
-
-
 class Post(models.Model):
     """
     The main blog post.
     """
+    DIFFICULTY_CHOICES = [
+        ('Easy', 'Easy'),
+        ('Moderate', 'Moderate'),
+        ('Difficult', 'Difficult')
+    ]
+
     title = models.CharField(max_length=200, unique=True, blank=False)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="blog_posts")
-    # dog_friendly = models.BooleanField(default=False)
-    # city = models.CharField(max_length=50, null=True, blank=False)
-    # difficulty = models.ForeignKey(
-    #    'difficulty', on_delete=models.SET_NULL, null=True,
-    #     related_name="difficulty")
+        User, on_delete=models.CASCADE, related_name='blog_posts')
+    difficulty = models.CharField(max_length=20, choices=DIFFICULTY_CHOICES,
+                                  default='Easy')
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
-    featured_image = CloudinaryField('image', default='placeholder'),
+    featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)

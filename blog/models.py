@@ -11,7 +11,7 @@ class Trail(models.Model):
     """
     Trail table.
     """
-    trail_name = models.CharField(max_length=50)
+    trail_name = models.CharField(max_length=200)
     trail_image = CloudinaryField('image', default='placeholder')
     slug = models.SlugField(max_length=200, unique=True)
 
@@ -23,14 +23,19 @@ class Post(models.Model):
     """
     The main blog post.
     """
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200, unique=True, blank=False)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts")
+    # dog_friendly = models.BooleanField(default=False)
+    # city = models.CharField(max_length=50, null=True, blank=False)
+    # difficulty = models.ForeignKey(
+    #    'difficulty', on_delete=models.SET_NULL, null=True,
+    #     related_name="difficulty")
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder'),
-    excerpt = models.TextField()
+    excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='blog_likes', blank=True)
@@ -49,14 +54,14 @@ class Post(models.Model):
     def number_of_saves(self):
         return self.saves.count()
 
-    # def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
 
-    #     if not self.slug:
-    #         self.slug = slugify(self.title)
-    #     return super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
-    # def get_absolute_url(self):
-    #     return reverse('list-hikes')
+    def get_absolute_url(self):
+        return reverse('list_hikes')
 
 
 class Comment(models.Model):

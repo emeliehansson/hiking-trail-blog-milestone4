@@ -5,6 +5,7 @@ from django.utils.text import slugify
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CommentForm, UserBlogPost
+from django.contrib import messages
 
 
 class PostList(ListView):
@@ -48,6 +49,7 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
+    
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by('created_on')
@@ -81,6 +83,39 @@ class PostDetail(View):
                 'comment_form': CommentForm()
             },
         )
+
+
+def update_post(request, post_id):
+    """
+    Users can access a form to updated their
+    own posts.
+    """
+    trail = Post.objects.get(pk=post_id)
+    form = UserBlogPost(request.POST or None, instance=trail)
+    if post.author != request.user:
+        return redirect("This is not your post, you can't update.")
+    if form.is_valid():
+        form.save()
+        return redirect('list-trails')
+
+    return render(request,
+                  'update_post.html',
+                  {'update_trails': trail, 'form': form})
+
+
+def list_trails(request):
+    """
+    The posts the user has created will
+    be listed in this view.
+    """
+    if request.user.is_authenticated:
+        user = request.user.id
+        review = Post.objects.filter(author.user)
+        return render(request, 'trail_list.html', {'post': post})
+    
+    else:
+        messages.success(request, ('You have to login first.'))
+        return redirect('home')
 
 
 class PostLike(View):
@@ -127,7 +162,7 @@ class AddPost(LoginRequiredMixin, CreateView):
         messages.success(
             self.request,
             'Your blogpost have been added and is waiting for approval!')
-        form.slug = slugify(form.instance.trail_name)
+        form.slug = slugify(form.instance.title)
         return super().form_valid(form)
 
 

@@ -189,6 +189,15 @@ footer {
     padding: 10px;
 }
 
+.btn-back{
+    background-color: #4b4a2c;
+    color: #fafafa;
+}
+
+.success {
+    margin-top: 10px;
+}
+
 
 /* ----------------------- Media Queries
 @media screen and (max-width: 375px) {

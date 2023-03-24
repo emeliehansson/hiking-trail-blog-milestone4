@@ -25,13 +25,16 @@ class Post(models.Model):
                                   default='Easy')
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
-    featured_image = CloudinaryField('image', default='placeholder')
+    city = models.CharField(max_length=50, blank=False, default='Jönköping')
+    featured_image = CloudinaryField('image', default='placeholder',
+                                     blank=True)
     excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='blog_likes', blank=True)
     saves = models.ManyToManyField(
         User, related_name='blogpost_saves', blank=True)
+    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-created_on"]
@@ -52,7 +55,7 @@ class Post(models.Model):
         return super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('list_hikes')
+        return reverse('post_detail')
 
 
 class Comment(models.Model):
@@ -74,4 +77,13 @@ class Comment(models.Model):
         return f'Comment {self.body} by {self.name}'
 
 
-# class UserProfile(models.Model):
+class Contact(models.Model):
+    """
+    Contact Form.
+    """
+    name = models.CharField(max_length=160)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name

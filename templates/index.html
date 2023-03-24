@@ -18,7 +18,7 @@
                                     <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="Image posted by user who created the post" style="width:100%; height:100%;">
                                     {% endif %}
                                     <div class="image-flash">
-                                        <p class="level">Difficulty: {{ post.level }}</p>
+                                        <p class="level">Level: {{ post.difficulty }}</p>
                                     </div>
                                 </div>
                                 <a href="{% url 'post_detail' post.slug %}" class="post-link">

@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import View, CreateView, ListView, UpdateView
-from django.urls import reverse_lazy
 from .models import Post
 from django.utils.text import slugify
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CommentForm, UserBlogPost
+from .forms import CommentForm, ContactForm, UserBlogPost
 from django.contrib import messages
 
 
@@ -22,8 +21,7 @@ class PostList(ListView):
 
 class PostDetail(View):
     """
-    Gets full post detail with an approved
-    post from a User.
+    Gets full post detail with an approved post.
     """
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
@@ -92,19 +90,37 @@ class AddPost(LoginRequiredMixin, CreateView):
     template. This view makes sure of that.
     """
     model = Post
+    form_class = UserBlogPost
     template_name = 'add_post.html'
-    fields = ('title', 'content', 'featured_image',)
 
     def get_success_url(self):
         return reverse('home')
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.author = self.request.user
         messages.success(
             self.request,
             'Your blogpost have been added and is waiting for approval!')
         form.slug = slugify(form.instance.title)
         return super().form_valid(form)
+
+
+# class EditPost()
+
+
+def contact(request):
+    submitted = False
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'contact_success.html')
+    else:
+        form = ContactForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'contact.html',
+                  {'form': form, 'submitted': submitted})
 
 
 class PostLike(View):

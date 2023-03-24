@@ -1,40 +1,37 @@
 {% extends "base.html" %} {% load crispy_forms_tags %} {% block content %}
-<!-- Only allows users who are log in -->
+
+<!-- Only logged in users will be able to add a post -->
 {% if user.is_authenticated %}
 <div class="container mb-3">
 	<div class="row">
 		<div class="col-md-8 mt-1 offset-md-2">
+			<br>
+			<h2 class="text-center text-uppercase">Create Your own post with a Trail you Love</h2>
+			<p class="text-center">
+				Please share your favourite hike with us! In your post you should include the name of the hike, 
+				what city it is located in and also tell us a little about the hike. For example: the distance, what type of terrain and
+				any other information you would like to share. If you want, please also add an image!
+			</p>
 			<!-- Success alert when submitted -->
-			<h2 class="text-center">Create Your own post with a Trail you love!</h2>
-			{% if submitted %} Your Post was Submitted Successfully, Thank You for Contributing.
+			{% if submitted %} 
+			<div class="alert alert-success" role="alert">
+				Your post was added and is awaiting approval. Thank you for contributing!
+			</div>
 			{% else %}
 			<div class="container">
 				<div class="row">
-					<form method=POST>
-						{% csrf_token %}
-						{{ form|crispy }}
-						  <br>
-						  <br>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input dog-friendly" type="checkbox" id="inlineCheckbox1" value="Dog-Friendly">
-							<label class="form-check-label" for="inlineCheckbox1">Dog-Friendly</label>
-						</div>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input kid-friendly" type="checkbox" id="inlineCheckbox2" value="Kid-Friendly">
-							<label class="form-check-label" for="inlineCheckbox2">Kid-Friendly</label>
-						</div>
-						<br>
-						<hr>
-						<input type="submit" value="Submit" class="btn btn-signup">
-					</form>
+					<div class="form-group">
+						<form method=POST>
+							{% csrf_token %}
+							{{ form|crispy }}
+							<br>
+							<hr>
+							<input type="submit" value="Submit" class="btn btn-signup">
+						</form>
+					</div>
 				</div>
-			</div> {% endif %}
-			<!-- Alert to let users know they need to be logged in  -->
-			{% else %}
-			<div class="text-light">
-				<h1>Sorry. You must be Logged In to create a review. </h1>
-				<a href="{% url 'account_login' %}">Login Here</a>
-			</div>
+			</div> 
+			{% endif %}
 		</div>
 	</div>
 </div>

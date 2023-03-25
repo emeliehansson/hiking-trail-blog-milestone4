@@ -20,6 +20,24 @@ class UserBlogPost(forms.ModelForm):
     }
 
 
+class EditForm(forms.ModelForm):
+    """
+    Creates a form for the user to add a blog Post.
+    """
+    class Meta:
+        model = Post
+        fields = ('title', 'content', 'difficulty', 'featured_image')
+
+    widgets = {
+        'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder':
+                                        'Add the Name of the Trail'}),
+        'content': forms.Textarea(attrs={'class': 'form-control'}),
+        'diffictulty': forms.Select(attrs={'class': 'form-control'}),
+        'featured_image': forms.Select(attrs={'class': 'form-control'}),
+    }
+
+
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

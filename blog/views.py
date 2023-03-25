@@ -4,7 +4,7 @@ from .models import Post
 from django.utils.text import slugify
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CommentForm, ContactForm, UserBlogPost
+from .forms import CommentForm, ContactForm, UserBlogPost, EditForm
 from django.contrib import messages
 
 
@@ -105,7 +105,13 @@ class AddPost(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-# class EditPost()
+class EditPost(UpdateView):
+    model = Post
+    template_name = 'edit_post.html'
+    form_class = EditForm
+
+    def get_success_url(self):
+        return reverse('home')
 
 
 def contact(request):

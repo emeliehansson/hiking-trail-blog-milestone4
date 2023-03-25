@@ -69,6 +69,13 @@ footer {
 .card {
     border: none;
     background-color: transparent;
+    float: none;
+}
+
+.container-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .image-container {
@@ -81,6 +88,7 @@ footer {
     min-width: 30%;
     left: -2px;
     background-color: #4b4a2c;
+    color: #fafafa;
 }
 
 .level {
@@ -91,16 +99,29 @@ footer {
 
 .card-title {
     color: #363935;
-    text-decoration: none;
+    margin-top: 10px;
 }
 
 .card-title:hover,
 .card-title:active {
-    color: #363935;
+    color: #7c8379;
+    text-decoration: none;
+}
+
+.post-link {
+    text-decoration: none;
+}
+
+.post-link:hover {
+    text-decoration: none;
 }
 
 .card-text {
     color: #363935;
+}
+
+.posted-by {
+    font-size: 15px;
 }
 
 /* ----------------------- Post detail view */
@@ -157,6 +178,15 @@ footer {
 .btn-signup {
     background-color: #4b4a2c;
     color: #fafafa;
+    text-decoration: none;
+    padding: 8px;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #4b4a2c;
+    color: #fafafa;
+    text-decoration: none;
 }
 
 .btn-like {
@@ -189,9 +219,8 @@ footer {
     padding: 10px;
 }
 
-.btn-back{
-    background-color: #4b4a2c;
-    color: #fafafa;
+.pagination {
+    color: #4b4a2c;
 }
 
 .success {

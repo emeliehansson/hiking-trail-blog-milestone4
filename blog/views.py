@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.views.generic import View, CreateView, ListView, UpdateView
+from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView
 from .models import Post
 from django.utils.text import slugify
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CommentForm, ContactForm, UserBlogPost, EditForm
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 
 class PostList(ListView):
@@ -112,6 +113,12 @@ class EditPost(UpdateView):
 
     def get_success_url(self):
         return reverse('home')
+
+
+class DeletePost(DeleteView):
+    model = Post
+    template_name = 'delete_post.html'
+    success_url = reverse_lazy('home')
 
 
 def contact(request):

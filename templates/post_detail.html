@@ -2,13 +2,15 @@
 
 {% load crispy_forms_tags %}
 
+<!-- The detailview of the blog post -->
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
             <div class="col-md-5 masthead-text">
                 <br>
-                <h1 class="post-title text-uppercase">{{ post.title }} | {{ post.city }}</h1>
-                <p class="post-subtitle">Written By: {{ post.author }} | {{ post.created_on }}</p>
+                <h2 class="post-title text-uppercase">{{ post.title }}</h2>
+                <h4 class="text-uppercase">{{ post.city }}</h4>
+                <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
             </div>
             <br>
             <div class="d-none d-md-block col-md-5 masthead-image image-top">
@@ -41,60 +43,49 @@
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-
                                 <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like">
                                     <i class="fa-sharp fa-solid fa-heart"></i>
                                 </button>
-
                                 {% else %}
-
                                 <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like">
                                     <i class="fa-sharp fa-regular fa-heart"></i>
                                 </button>
-
                                 {% endif %}
-
-
                             </form>
                             {% else %}
-
                             <span class="text-secondary"><i class="fa-sharp fa-regular fa-heart"></i></span>
                             {% endif %}
                             <span class="text-secondary">{{ post.number_of_likes }}</span>
                         </strong>
                         <br><br>
-                        <div>
-                            <!-- The EDIT button will only show on the posts created by the logged in user -->
-                            {% if user.is_authenticated and user == post.author %}
-                            <a href="{% url 'edit_post' post.pk %}" type="submit"
-                                class="'btn btn-signup text-uppercase">Edit Post</a>
-                            {% endif %}
-                        </div>
-
+                            <div class="update-post">
+                                <!-- The EDIT button will only show on the posts created by the logged in user -->
+                                {% if user.is_authenticated and user == post.author %}
+                                <a href="{% url 'edit_post' post.pk %}" type="submit"
+                                    class="'btn btn-signup text-uppercase">Edit Post</a>
+                                <a href="{% url 'delete_post' post.pk %}" type="submit"
+                                    class="'btn btn-delete text-uppercase">Delete Post</a>
+                                {% endif %}
+                            </div>
                     </div>
+
+                    <!-- If the user is logged in they will be able to like and save the posts -->
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'post_save' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if saved %}
-
                                 <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-save">
                                     <i class="fa-sharp fa-solid fa-bookmark"></i>
                                 </button>
-
                                 {% else %}
-
                                 <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-save">
                                     <i class="fa-sharp fa-regular fa-bookmark"></i>
                                 </button>
-
                                 {% endif %}
-
-
                             </form>
                             {% else %}
-
                             <span class="text-secondary"><i class="fa-sharp fa-regular fa-bookmark"></i></span>
                             {% endif %}
                             <span class="text-secondary">{{ post.number_of_saves }}</span>
@@ -102,7 +93,8 @@
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i> {{ total_comments }}</strong>
+                        <strong class="text-secondary btn-comments"><i class="far fa-comments"></i>
+                            {{ total_comments }}</strong>
                         {% endwith %}
                     </div>
                 </div>
@@ -114,6 +106,8 @@
             <hr>
         </div>
     </div>
+
+    <!-- Comment section -->
     <div class="row">
         <div class="col card mb-4 mt-3 ">
             <h3 class="text-uppercase">Comments:</h3>
@@ -133,15 +127,14 @@
         </div>
         <div class="col-md-8 card mb-4  mt-3 ">
             <div class="card-body">
-
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
                 </div>
                 {% else %}
 
+                <!-- If the user is logged in they will be able to leave comments on posts -->
                 {% if user.is_authenticated %}
-
                 <h3>Leave a Comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="POST" style="margin-top: 1.3em;">

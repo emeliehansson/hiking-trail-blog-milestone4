@@ -7,6 +7,17 @@ from django.urls import reverse
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
 
+class Category(models.Model):
+
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('home')
+
+
 class Post(models.Model):
     """
     The main blog post.
@@ -15,6 +26,30 @@ class Post(models.Model):
         ('Easy', 'Easy'),
         ('Moderate', 'Moderate'),
         ('Difficult', 'Difficult')
+    ]
+
+    CATEGORY_CHOICES = [
+        ('Blekinge län', 'Blekinge län'),
+        ('Dalarnas län', 'Dalarnas län'),
+        ('Gotlands län', 'Gotlands län'),
+        ('Gävleborgs län', 'Gävleborgs län'),
+        ('Hallands län', 'Hallands län'),
+        ('Jämtlands län', 'Jämtlands län'),
+        ('Jönköpings län', 'Jönköpings län'),
+        ('Kalmar län', 'Kalmar län'),
+        ('Kronobergs län', 'Kronobergs län'),
+        ('Norrbottens län', 'Norrbottens län'),
+        ('Skåne län', 'Skåne län'),
+        ('Stockholms län', 'Stockholms län'),
+        ('Södermanlands län', 'Södermanlands län'),
+        ('Uppsala län', 'Uppsala län'),
+        ('Värmlands län', 'Värmlands län'),
+        ('Västerbottens län', 'Västerbottens län'),
+        ('Västernorrlands län', 'Västernorrlands län'),
+        ('Västmanlands län', 'Västmanlands län'),
+        ('Västra Götalands län', 'Västra Götalands län'),
+        ('Örebro län', 'Örebro län'),
+        ('Östergötlands län', 'Östergötlands län'),
     ]
 
     title = models.CharField(max_length=200, blank=False)
@@ -35,7 +70,8 @@ class Post(models.Model):
     saves = models.ManyToManyField(
         User, related_name='blogpost_saves', blank=True)
     approved = models.BooleanField(default=False)
-    category = models.CharField(max_length=100, default='Jönköping')
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES,
+                                default='Jönköpings län')
 
     class Meta:
         ordering = ["-created_on"]
@@ -57,16 +93,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail')
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('home')
 
 
 class Comment(models.Model):

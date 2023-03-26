@@ -27,11 +27,14 @@ class EditForm(forms.ModelForm):
     """
     class Meta:
         model = Post
-        fields = ('title', 'content', 'difficulty', 'featured_image')
+        fields = ('title', 'city', 'category', 'content', 'difficulty',
+                  'featured_image')
 
     widgets = {
         'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder':
                                         'Add the Name of the Trail'}),
+        'city': forms.TextInput(attrs={'class': 'form-control'}),
+        'category': forms.Select(attrs={'class': 'form-control'}),
         'content': forms.Textarea(attrs={'class': 'form-control'}),
         'diffictulty': forms.Select(attrs={'class': 'form-control'}),
         'featured_image': forms.Select(attrs={'class': 'form-control'}),

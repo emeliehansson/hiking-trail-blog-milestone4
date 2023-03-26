@@ -17,7 +17,7 @@ class Post(models.Model):
         ('Difficult', 'Difficult')
     ]
 
-    title = models.CharField(max_length=200, unique=True, blank=False)
+    title = models.CharField(max_length=200, blank=False)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='blog_posts')
@@ -35,6 +35,7 @@ class Post(models.Model):
     saves = models.ManyToManyField(
         User, related_name='blogpost_saves', blank=True)
     approved = models.BooleanField(default=False)
+    category = models.CharField(max_length=100, default='Jönköping')
 
     class Meta:
         ordering = ["-created_on"]
@@ -56,6 +57,16 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail')
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('home')
 
 
 class Comment(models.Model):

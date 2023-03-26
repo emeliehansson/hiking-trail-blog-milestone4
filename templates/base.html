@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Hiking Trail Blog</title>
+    <title>Hiking Blog</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
 
@@ -33,7 +33,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <a class="navbar-brand text-uppercase" href="{% url 'home' %}">Hiking Trail Blog</a>
+        <a class="navbar-brand text-uppercase" href="{% url 'home' %}">Hiking Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,15 +47,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'add_post' %}">Add a Post</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Find Area</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Find Area</a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
@@ -75,6 +66,19 @@
             </ul>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
     <section class="hero-image" aria-label="Image of a woman taking photos on a mountain hike">
         <div class="container-fluid">

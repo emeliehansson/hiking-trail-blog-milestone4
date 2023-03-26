@@ -7,7 +7,7 @@
 body {
     background-color: #fafafa;
     font-family: 'Montserrat', sans-serif;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
     color: #363935;
 }
 
@@ -117,6 +117,7 @@ footer {
 
 .card-text {
     color: #363935;
+    text-align: inherit;
 }
 
 .posted-by {
@@ -149,8 +150,10 @@ footer {
 .signin {
     background: #e8e1d7;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
     color: #363935;
+    text-align: center;
 }
 .btn-signin {
     background-color: #4b4a2c;
@@ -160,8 +163,10 @@ footer {
 .signout {
     background: #e8e1d7;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
     color: #363935;
+    text-align: center;
 }
 
 .btn-signout {
@@ -172,8 +177,10 @@ footer {
 .signup {
     background: #e8e1d7;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
     color: #363935;
+    text-align: center;
 }
 
 .btn-signup {

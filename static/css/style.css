@@ -7,7 +7,7 @@
 body {
     background-color: #fafafa;
     font-family: 'Montserrat', sans-serif;
-    padding-bottom: 150px;
+    margin-bottom: 100px;
     color: #363935;
 }
 
@@ -15,10 +15,10 @@ body {
 
 .hero-image {
     width: 100%;
-    height: 300px;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://res.cloudinary.com/diy7yqm8i/image/upload/v1679322804/pexels-krivec-ales-554609_bcvucm.jpg');
+    height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://res.cloudinary.com/diy7yqm8i/image/upload/v1679822301/pexels-krivec-ales-554609_3_pq2srr.webp');
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: bottom center;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -225,7 +225,7 @@ footer {
 
 
 .btn-delete {
-    background-color: #c97360;
+    background-color: #7D3B2B;
     color: #fafafa;
     text-decoration: none;
     padding: 8px;

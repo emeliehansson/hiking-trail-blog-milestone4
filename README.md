@@ -19,7 +19,5 @@
 - As a User, I want to be able to read other users comments, so that I can take part of the conversation.
 - As a User, I can register for an account, so that I can add my own blog posts with hiking trails in my area.
 
-
-
-
+## **Deployment**
 

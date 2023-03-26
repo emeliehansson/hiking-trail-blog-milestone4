@@ -9,16 +9,16 @@
             <div class="col-md-5 masthead-text">
                 <br>
                 <h2 class="post-title text-uppercase">{{ post.title }}</h2>
-                <h4 class="text-uppercase">{{ post.city }}</h4>
+                <h3 class="text-uppercase">{{ post.city }}</h3>
                 <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
             </div>
             <br>
             <div class="d-none d-md-block col-md-5 masthead-image image-top">
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="https://res.cloudinary.com/diy7yqm8i/image/upload/v1679304360/vtsawk5hivjodgwuhhal.webp"
-                    width="100%">
+                <img src="https://res.cloudinary.com/diy7yqm8i/image/upload/v1679823656/Optimized-young-fit-woman-hiking-to-the-waterfall-mountain-picjumbo-com_jth7rn.webp"
+                    width="100%" height="100%" alt="Woman hiking to the waterfall mountain">
                 {% else %}
-                <img src="{{ post.featured_image.url }}" width="100%">
+                <img src="{{ post.featured_image.url }}" width="100%" height="100%" alt="Image posted by user who created the post">
                 {% endif %}
                 <div class="image-flash">
                     <p class="level">Level: {{ post.difficulty }}</p>
@@ -43,11 +43,11 @@
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like">
+                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like" aria-label="like-button">
                                     <i class="fa-sharp fa-solid fa-heart"></i>
                                 </button>
                                 {% else %}
-                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like">
+                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-like" aria-label="like-button">
                                     <i class="fa-sharp fa-regular fa-heart"></i>
                                 </button>
                                 {% endif %}
@@ -76,11 +76,11 @@
                             <form class="d-inline" action="{% url 'post_save' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if saved %}
-                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-save">
+                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-save" aria-label="save-button">
                                     <i class="fa-sharp fa-solid fa-bookmark"></i>
                                 </button>
                                 {% else %}
-                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-save">
+                                <button type="submit" name="blogpost_id" value="{{ post.slug }}" class="btn-save" aria-label="save-button">
                                     <i class="fa-sharp fa-regular fa-bookmark"></i>
                                 </button>
                                 {% endif %}

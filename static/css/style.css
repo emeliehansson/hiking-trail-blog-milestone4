@@ -117,7 +117,6 @@ footer {
 
 .card-text {
     color: #363935;
-    text-align: inherit;
 }
 
 .posted-by {
@@ -152,8 +151,9 @@ footer {
     margin-top: 20px;
     margin-bottom: 20px;
     padding-bottom: 10px;
+    padding-left: 20px;
     color: #363935;
-    text-align: center;
+
 }
 .btn-signin {
     background-color: #4b4a2c;
@@ -165,8 +165,8 @@ footer {
     margin-top: 20px;
     margin-bottom: 20px;
     padding-bottom: 10px;
+    padding-left: 20px;
     color: #363935;
-    text-align: center;
 }
 
 .btn-signout {
@@ -179,8 +179,8 @@ footer {
     margin-top: 20px;
     margin-bottom: 20px;
     padding-bottom: 10px;
+    padding-left: 20px;
     color: #363935;
-    text-align: center;
 }
 
 .btn-signup {
@@ -227,17 +227,15 @@ footer {
 .update-post {
     display: flex;
     text-align: center;
-    padding: 15px;
 }
-
 
 .btn-delete {
     background-color: #7D3B2B;
     color: #fafafa;
     text-decoration: none;
-    padding: 8px;
+    padding: 5px;
     font-size: 15px;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .btn-delete:hover,

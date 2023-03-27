@@ -15,7 +15,7 @@ body {
 
 .hero-image {
     width: 100%;
-    height: 300px;
+    height: 450px;
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://res.cloudinary.com/diy7yqm8i/image/upload/v1679822301/pexels-krivec-ales-554609_3_pq2srr.webp');
     background-repeat: no-repeat;
     background-position: bottom center;
@@ -237,11 +237,18 @@ footer {
     padding: 8px;
 }
 
+.btn-edit:hover,
+.btn-edit:active {
+    color: #fafafa;
+    text-decoration: none;
+}
+
 .btn-delete {
     background-color: #7D3B2B;
     color: #fafafa;
     text-decoration: none;
     padding: 8px;
+    padding-bottom: 9px;
     font-size: 15px;
     margin-left: 5px;
 }
@@ -295,13 +302,13 @@ footer .btn {
 @media screen and (min-width: 768px) {
     
     .hero-image {
-        height: 300px;
+        height: 460px;
     }
 
     .btn-delete {
-        margin-left: 0;
-        margin-top: 5px;
+        margin-left: 5px;
         padding: 5px;
+        padding-top: 7px;
     }
 
     .btn-edit {
@@ -316,6 +323,16 @@ footer .btn {
         margin-top: 15px;
     }
 
+    .signup p,
+    .signin p,
+    .signout p {
+        font-size: 13px;
+    }
+
+    .contact {
+        font-size: 15px;
+    }
+
     footer > p {
         font-size: 14px;
     }
@@ -323,9 +340,9 @@ footer .btn {
 }
 
 @media screen and (min-width: 1024px) {
-    .hero-image {
-        height: 400px;
-    }
+    /* .hero-image {
+        height: 450px;
+    } */
 
     .hero-image h5 {
         font-size: 23px;
@@ -378,88 +395,90 @@ footer .btn {
 }
 
 @media screen and (min-width: 1440px) {
-    body {
-        margin-bottom: 250px;
-    }
     
     .hero-image {
-        height: 550px;
+        height: 450px;
     }
 
     .hero-image h5 {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     h2 {
-        font-size: 35px;
+        font-size: 25px;
     }
 
     .navbar-brand {
-        font-size: 30px;
+        font-size: 25px;
     }
     
     .navbar-nav {
         color: #363935;
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .card-title {
-        font-size: 28px;
+        font-size: 25px;
     }
 
     .posted-by {
-        font-size: 19px;
+        font-size: 15px;
     }
 
     .page-link {
-        font-size: 19px;
+        font-size: 15px;
     }
 
     .signup p,
     .signin p,
     .signout p {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .btn-signup,
     .btn-signin,
     .btn-signout {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     footer > p {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     footer .btn {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     .contact {
-        font-size: 22px;
+        font-size: 16px;
+        padding-bottom: 10px;
     }
 }
 
 @media screen and (min-width: 2560px) {
+    body {
+        margin-bottom: 200px;
+    }
+    
     .hero-image {
-        height: 1100px;
+        height: 900px;
     }
 
     .hero-image h5 {
-        font-size: 45px;
+        font-size: 40px;
     }
 
     h2 {
-        font-size: 60px;
+        font-size: 50px;
     }
 
     .navbar-brand {
-        font-size: 50px;
+        font-size: 45px;
     }
     
     .navbar-nav {
         color: #363935;
-        font-size: 45px;
+        font-size: 40px;
     }
 
     .card-title {
@@ -477,27 +496,34 @@ footer .btn {
     .signup p,
     .signin p,
     .signout p {
-        font-size: 35px;
+        font-size: 30px;
     }
 
     .btn-signup,
     .btn-signin,
     .btn-signout {
+        margin-top: 10px;
         font-size: 35px;
     }
 
     footer {
-        height: 7%;
+        height: 10%;
     }
     footer > p {
-        font-size: 35px;
+        font-size: 30px;
     }
 
     footer .btn {
-        font-size: 35px;
+        font-size: 30px;
     }
 
     .contact {
-        font-size: 35px;
+        font-size: 30px;
     }
+
+    .form-group,
+    .form-login {
+        font-size: 30px;
+    }
+
 }

@@ -38,7 +38,7 @@
                                 the posts created by the logged in user -->
                         {% if user.is_authenticated and user == post.author %}
                         <a href="{% url 'edit_post' post.pk %}" type="submit"
-                            class="'btn btn-signup text-uppercase">Edit Post</a>
+                            class="'btn btn-edit text-uppercase">Edit Post</a>
                         {% endif %}
                         {% if user.is_authenticated and user == post.author %}
                         <a href="{% url 'delete_post' post.pk %}" type="submit"
@@ -65,7 +65,7 @@
         <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
         {% endif %}
         {% if page_obj.has_next %}
-        <li><a href="?page={{ page_obj.next_page_number }}"> NEXT &raquo;</a></li>
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
         {% endif %}
     </ul>
 </nav>

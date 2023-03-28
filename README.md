@@ -365,9 +365,16 @@ At first Lighthouse testing for desktop, performance was measured at 43, and the
 &nbsp;
 
 After resizing the images for the blogposts and converting them to webp, the testing in Lighthouse was better.
+Desktop:
+&nbsp;
 
 ![Lighthouse Desktop](hikingblog/readme-assets/Lighthouse%20Desktop%20OK.png)
+&nbsp;
 
+Mobile:
+&nbsp;
+
+![Lighthouse Mobile](hikingblog/readme-assets/337524226_247335644406773_7889298064324535727_n.png)
 &nbsp;
 
 ## **Manual Testing**

@@ -660,9 +660,25 @@ In the IDE:
 - [Convertio](https://convertio.co/jpg-webp/)
 - [Diagrams.net](https://www.diagrams.net/) was used to create the flowchart.
 - [Balsamiq](https://balsamiq.com/) was used to create the wireframes.
+&nbsp;
 
 ## **Code**
 - [Bootstrap code for hero image](https://gist.github.com/adamdehaven/dceabb07450295fec6fc)
 - Code Institute Codestar project: borrowed code for some of the html templates.
 - Code Institute: I think therefore I blog module. Helped me with starting up my project by following the instructions.
 - [Cheatsheet for creating README.md](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables)
+&nbsp;
+
+## **Images**
+I have borrowed images from the hikes from various pages and will list them all below:
+- [Ekskogen på Visingsö](https://www.sfv.se/vara-fastigheter/sok/sverige/jonkopings-lan/ekskogen-pa-visingso/)
+- [Huskvarnabergen](https://www.alltrails.com/sv-se/trail/sweden/jonkoping/huskvarnabergen-ikhp-vandringsled/photos)
+- [Strömsberg Nature Reserve](https://stromsbergsforeningen.se/naturreservatet/skogen.html)
+- [Häggeberg and Granbäck](https://www.jonkoping.se/fritidkulturnatur/friluftslivnaturochparker/naturreservatochnaturminnen/naturreservatethaggebergochgranbackslovskogar.4.6a97be8416455cf58f81d7d.html)
+- [Visingsöslingorna](https://www.jonkoping.se/fritidkulturnatur/friluftslivnaturochparker/friluftsliv/vandringslederochpromenader/visingsoslingorna.4.4b30ec621761d85f3da27c1.html)
+- [Dumme Mosse](https://www.alltrails.com/sv-se/led/sweden/jonkoping/dummemosseleden-norra)
+&nbsp;
+
+## **Information**
+A lot of the information about the different places in the blog comes from this book:
+[Pearls of Nature](https://www.jonkoping.se/fritidkulturnatur/friluftslivnaturochparker/friluftsliv/friluftsomraden/naturparlorattbesoka/pearlsofnature.4.74fef9ab15548f0b8001bde.html)

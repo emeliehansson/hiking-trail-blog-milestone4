@@ -15,10 +15,10 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top" src="https://res.cloudinary.com/diy7yqm8i/image/upload/v1679830511/Optimized-young-fit-woman-hiking-to-the-waterfall-mountain-picjumbo-com-_1__rtxoiw.webp"
-                                    alt="Woman hiking to the waterfall mountain" style="width:100%; height:100;">
+                                    alt="Woman hiking to the waterfall mountain" width="500px" height="300px">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ post.featured_image.url }}"
-                                    alt="Image of a hiking trail" style="width:100%; height:100;">
+                                    alt="Image of a hiking trail" width="500px" height="300px">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="level text-uppercase">Level: {{ post.difficulty }}</p>

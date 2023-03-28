@@ -4,6 +4,8 @@ The Hiking Blog is a place where everyone from hiking enthusiasts to people curi
 
 &nbsp;
 
+You can view the live site here: [Hiking Blog](https://hiking-trail-blog.herokuapp.com/).
+
 # User Experience (UX)
 
 ## **Site Aims**

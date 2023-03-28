@@ -114,14 +114,14 @@ class EditPost(UpdateView):
 
     def get_success_url(self):
         return reverse('home')
-    
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        messages.success(
-            self.request,
-            'Your blogpost have been updated!')
-        form.slug = slugify(form.instance.title)
-        return super().form_valid(form)
+
+    # def form_valid(self, form):
+    #     form.instance.author = self.request.user
+    #     messages.success(
+    #         self.request,
+    #         'Your blogpost have been updated!')
+    #     form.slug = slugify(form.instance.title)
+    #     return super().form_valid(form)
 
 
 class DeletePost(DeleteView):

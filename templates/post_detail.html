@@ -17,10 +17,10 @@
                 
                 {% if "placeholder" in post.featured_image.url %}
                 <img src="https://res.cloudinary.com/diy7yqm8i/image/upload/v1679830511/Optimized-young-fit-woman-hiking-to-the-waterfall-mountain-picjumbo-com-_1__rtxoiw.webp" 
-                width="100%" height="100%" alt="Woman hiking to the waterfall mountain">
+                style="width:100%; height:100%;" alt="Woman hiking to the waterfall mountain">
                 {% else %}
-                <img src=" {{ post.featured_image.url }}" width="100%" height="100%" 
-                alt="Image posted by user who created the post">
+                <img src=" {{ post.featured_image.url }}" style="width:100%; height:100;"
+                alt="Image of a hiking trail">
                 {% endif %}
                 <div class="image-flash">
                     <p class="level">Level: {{ post.difficulty }}</p>

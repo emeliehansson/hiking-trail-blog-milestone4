@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.views.generic import View, CreateView, ListView, UpdateView
-from django.views.generic import DeleteView
+from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView  # noqa
 from .models import Post
 from django.utils.text import slugify
 from django.http import HttpResponseRedirect
@@ -99,11 +98,13 @@ class AddPost(LoginRequiredMixin, CreateView):
         return reverse('home')
 
     def form_valid(self, form):
+        form.save(commit=False)
         form.instance.author = self.request.user
+        form.instance.slug = slugify(form.instance.title)
+        form.save()
         messages.success(
             self.request,
             'Your blogpost have been added and is waiting for approval!')
-        form.slug = slugify(form.instance.title)
         return super().form_valid(form)
 
 

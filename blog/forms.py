@@ -8,7 +8,7 @@ class UserBlogPost(forms.ModelForm):
     """
     class Meta:
         model = Post
-        fields = ('title', 'city', 'category', 'content', 'difficulty',)
+        fields = ('title', 'city', 'category', 'content', 'difficulty')
 
     widgets = {
         'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -25,11 +25,10 @@ class EditForm(forms.ModelForm):
     """
     class Meta:
         model = Post
-        fields = ('title', 'city', 'category', 'content', 'difficulty',)
+        fields = ('title', 'city', 'category', 'content', 'difficulty')
 
     widgets = {
-        'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder':
-                                        'Add the Name of the Trail'}),
+        'title': forms.TextInput(attrs={'class': 'form-control'}),
         'city': forms.TextInput(attrs={'class': 'form-control'}),
         'category': forms.Select(attrs={'class': 'form-control'}),
         'content': forms.Textarea(attrs={'class': 'form-control'}),

@@ -14,8 +14,7 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top"
-                                    src="https://res.cloudinary.com/diy7yqm8i/image/upload/v1679830511/Optimized-young-fit-woman-hiking-to-the-waterfall-mountain-picjumbo-com-_1__rtxoiw.webp"
+                                <img class="card-img-top" src="https://res.cloudinary.com/diy7yqm8i/image/upload/v1679830511/Optimized-young-fit-woman-hiking-to-the-waterfall-mountain-picjumbo-com-_1__rtxoiw.webp"
                                     alt="Woman hiking to the waterfall mountain" width="100%" height="100%">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ post.featured_image.url }}"

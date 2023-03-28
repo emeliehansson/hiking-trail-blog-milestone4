@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import View, CreateView, ListView, UpdateView
+from django.views.generic import DeleteView
 from .models import Post
 from django.utils.text import slugify
 from django.http import HttpResponseRedirect
@@ -113,6 +114,14 @@ class EditPost(UpdateView):
 
     def get_success_url(self):
         return reverse('home')
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        messages.success(
+            self.request,
+            'Your blogpost have been updated!')
+        form.slug = slugify(form.instance.title)
+        return super().form_valid(form)
 
 
 class DeletePost(DeleteView):

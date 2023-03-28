@@ -8,8 +8,7 @@ class UserBlogPost(forms.ModelForm):
     """
     class Meta:
         model = Post
-        fields = ('title', 'city', 'category', 'content', 'difficulty',
-                  'featured_image')
+        fields = ('title', 'city', 'category', 'content', 'difficulty')
 
     widgets = {
         'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -17,7 +16,6 @@ class UserBlogPost(forms.ModelForm):
         'category': forms.Select(attrs={'class': 'form-control'}),
         'content': forms.Textarea(attrs={'class': 'form-control'}),
         'diffictulty': forms.Select(attrs={'class': 'form-control'}),
-        'featured_image': forms.Select(attrs={'class': 'form-control'}),
     }
 
 
@@ -27,8 +25,7 @@ class EditForm(forms.ModelForm):
     """
     class Meta:
         model = Post
-        fields = ('title', 'city', 'category', 'content', 'difficulty',
-                  'featured_image')
+        fields = ('title', 'city', 'category', 'content', 'difficulty')
 
     widgets = {
         'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder':
@@ -37,7 +34,6 @@ class EditForm(forms.ModelForm):
         'category': forms.Select(attrs={'class': 'form-control'}),
         'content': forms.Textarea(attrs={'class': 'form-control'}),
         'diffictulty': forms.Select(attrs={'class': 'form-control'}),
-        'featured_image': forms.Select(attrs={'class': 'form-control'}),
     }
 
 

@@ -8,7 +8,7 @@ class UserBlogPost(forms.ModelForm):
     """
     class Meta:
         model = Post
-        fields = ('title', 'city', 'category', 'content', 'difficulty')
+        fields = ('title', 'city', 'category', 'content', 'difficulty',)
 
     widgets = {
         'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -25,7 +25,7 @@ class EditForm(forms.ModelForm):
     """
     class Meta:
         model = Post
-        fields = ('title', 'city', 'category', 'content', 'difficulty')
+        fields = ('title', 'city', 'category', 'content', 'difficulty',)
 
     widgets = {
         'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder':

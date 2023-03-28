@@ -325,20 +325,30 @@ The CSS Stylesheet was validated using [Jigsaw Validator](https://jigsaw.w3.org/
 &nbsp;
 
 ### **HTML Validation**
-&nbsp;
+The HTML validation was done in [W3C Validator](https://validator.w3.org/). At the first validation the following error messages showed:
 &nbsp;
 
+![HTML validation error](hikingblog/readme-assets/Ska%CC%88rmavbild%202023-03-28%20kl.%2018.01.33.png)
+&nbsp;
+
+These errors were because I had the wrong code for my images in html templates, after changing it to style="width:100%; height:100%;" the validation went through without errors.
+&nbsp;
+
+![HTML validaton OK](hikingblog/readme-assets/Ska%CC%88rmavbild%202023-03-28%20kl.%2018.32.34.png)
+&nbsp;
 
 ### **Python Validation**
-All Python code has been validatet through [Code Institutes Python Validator](https://pep8ci.herokuapp.com/).
+All Python code has been validated through [Code Institutes Python Validator](https://pep8ci.herokuapp.com/).
 &nbsp;
 
 Only a few errors were found, for example "missing blank line at end of file" or "trailing whitespace". These were corrected and no other errors were found.
-
 &nbsp;
 
 ### **JavaScript Validation**
+All JavaScript code has been validated through [JSHint Validator](https://jshint.com/).  
 &nbsp;
+
+Only a few errors were found, for example "missing semicolon". These were corrected and no other errors were found.
 &nbsp;
 
 

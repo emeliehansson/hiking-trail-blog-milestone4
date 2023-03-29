@@ -4,7 +4,11 @@ The Hiking Blog is a place where everyone from hiking enthusiasts to people curi
 
 &nbsp;
 
+![Am I Responsive](hikingblog/readme-assets/Am%20I%20responsive.png)
+&nbsp;
+
 You can view the live site here: [Hiking Blog](https://hiking-trail-blog.herokuapp.com/).
+&nbsp;
 
 # User Experience (UX)
 
@@ -219,7 +223,7 @@ The fonts chosen for this project is Montserrat together with Karla.
 
 ![Add Post Page](hikingblog/readme-assets/Features/Add%20Post%20Page.png)
 
-## **Detail Post Page**
+## **Post Detail Page**
 ---
 - By clicking one of the posts the user will be redirected to a detail page for that specific post. 
 - On this page they will be able to read the entire blog post.
